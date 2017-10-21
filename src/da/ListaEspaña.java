@@ -102,113 +102,83 @@ public class ListaEspaña {
         return true;
         
     }
-    
+     
     /**
      * <h1>printLineUp</h1>
      * <p>
-     * Metodo que añade una marca a cada jugador.</p>
+     * Metodo que imprime la alineacion de españa.</p>
      *
-     * @param lineUp
      * @return String: alineacion del equipo
      */
-    public String printLineUp(String lineUp){
+    public String printLineUp(){
         
-        int por = Integer.parseInt(lineUp.substring(0,1));
-        int def = Integer.parseInt(lineUp.substring(2,3));
-        int med = Integer.parseInt(lineUp.substring(4,5));
-        int dela = Integer.parseInt(lineUp.substring(6));
+        String resultado = "-------ESPAÑA \n\n";
         
-        int totalFormacion = por+def+med+dela;
+        ListaEspaña porteros = new ListaEspaña();
+        ListaEspaña defensas = new ListaEspaña();
+        ListaEspaña mediocampos = new ListaEspaña();
+        ListaEspaña delanteros = new ListaEspaña();
         
-        String alineacion = "-------ESPAÑA \n\n                   ";
-        
-        if(totalFormacion > 11 || totalFormacion < 11){
-            
-            System.out.println("ALINEACION ERRONEA");
-            
-        }else if(por != 1){
-            
-            System.out.println("SOLO PUEDE HABER UN PORTERO EN LA PORTERIA");
-            
-            }else{
-
-                ListaEspaña porteros = new ListaEspaña();
-                ListaEspaña defensas = new ListaEspaña();
-                ListaEspaña mediocampos = new ListaEspaña();
-                ListaEspaña delanteros = new ListaEspaña();
-
-                Nodo aux = cabeza;
+        Nodo aux = cabeza;
  
-                for(int i = 0; i < size; i++){
+            for(int i = 0; i < size; i++){
 
-                    switch(aux.getPlayer().getPosicion()){
-                        case "Portero":
-                            porteros.add(aux.getPlayer());
-                            break;
-                        case "Defensa":
-                            defensas.add(aux.getPlayer());
-                            break;
-                        case "Mediocampo":
-                            mediocampos.add(aux.getPlayer());
-                            break;
-                        case "Delantero": 
-                            delanteros.add(aux.getPlayer());
-                            break;
-                    }
-                    aux = aux.getSig();
+                switch(aux.getPlayer().getPosicion()){
+                    case "Portero":
+                        porteros.add(aux.getPlayer());
+                        break;
+                    case "Defensa":
+                        defensas.add(aux.getPlayer());
+                        break;
+                    case "Mediocampo":
+                        mediocampos.add(aux.getPlayer());
+                        break;
+                    case "Delantero": 
+                        delanteros.add(aux.getPlayer());
+                        break;
                 }
+                aux = aux.getSig();
+            }
                 
-                /////////////////////////////////////////////////////////////// Inicia creacion de formacion
+            resultado += "                "+porteros.getCabeza().getPlayer().getApellido()+"\n\n" + "    ";
+            
+            Nodo auxDef = defensas.getCabeza();
+            
+            while(auxDef != null){
                 
-                Nodo auxPor = porteros.getCabeza();
-
-                for(int i = 1; i <= por; i++){ // PORTEROS
-
-                    alineacion +=  auxPor.getPlayer().getApellido()+ "\n\n      ";
-                    auxPor = auxPor.getSig();
-
-                }
-
-                Nodo auxDef = defensas.getCabeza();
-
-                for(int i = 1; i <= def; i++){ // DEFENSAS
-
-                    alineacion +=  auxDef.getPlayer().getApellido() + " - ";
-                    auxDef = auxDef.getSig();
-                }
-
-                alineacion = alineacion.substring(0, alineacion.length()-2);
-                alineacion += "\n\n ";
-
-                Nodo auxMed = mediocampos.getCabeza();
-
-                for(int i = 1; i <= med; i++){ // MEDIOCAMPOS
-
-                    alineacion +=  auxMed.getPlayer().getApellido() + " - ";
-                    auxMed = auxMed.getSig();
-                }
-
-                alineacion = alineacion.substring(0, alineacion.length()-2);
-                alineacion += "\n\n                   ";
-
-                Nodo auxDela = delanteros.getCabeza();
-
-                for(int i = 1; i <= dela; i++){ // DELANTEROS
-
-                    alineacion +=  auxDela.getPlayer().getApellido() + " - ";
-                    auxDela = auxDela.getSig();
-                }
-
-                /////////////////////////////////////////////////////////////// Termina creacion de formacion
+                resultado += auxDef.getPlayer().getApellido() + " - ";
+                auxDef = auxDef.getSig();
                 
-                System.out.println("\n");
-
-            }//fin else
-        
-        alineacion = alineacion.substring(0, alineacion.length()-2);
-        alineacion += "\n\n";
-        
-        return alineacion;
+            }
+            
+            resultado = resultado.substring(0, resultado.length()-2);
+            resultado += "\n\n";
+            
+            Nodo auxMed = mediocampos.getCabeza();
+            
+            while(auxMed != null){
+                
+                resultado += auxMed.getPlayer().getApellido() + " - ";
+                auxMed = auxMed.getSig();
+                
+            }
+            
+            resultado = resultado.substring(0, resultado.length()-2);
+            resultado += "\n\n" + "                  ";
+            
+            Nodo auxDel = delanteros.getCabeza();
+            
+            while(auxDel != null){
+                
+                resultado += auxDel.getPlayer().getApellido() + " - ";
+                auxDel = auxDel.getSig();
+                
+            }
+            
+            resultado = resultado.substring(0, resultado.length()-2);
+            resultado += "\n\n";
+ 
+        return resultado;
     }
     
     /**

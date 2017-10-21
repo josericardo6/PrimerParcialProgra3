@@ -93,12 +93,11 @@ public class PrimerParcial {
         System.out.println(lc.printLineUp("1-4-3-3")); /////////////////////////IMPRIME LA FORMACION DE CHILE SEGUN DESEADA
         
         
-        System.out.println(le.printLineUp("1-4-5-1")); /*////////////////////////IMPRIME LA FORMACION DE ESPAÑA 
-                                           1-4-5-1                              (¡¡NO EDITABLE!! POR # DE JUGADORES Y SUS POSICIONES)*/
+        System.out.println(le.printLineUp()); /*////////////////////////////////IMPRIME LA FORMACION DE ESPAÑA*/ 
+                                                                       
        
         System.out.println(le.imprimeConMarca()); /*/////////////////////////////IMPRIME LA LISTA DE JUGADORES DE ESPAÑA CON SUS RESPECTIVAS
                                                                                  MARCAS*/                                                                   
-        
     }
     
 }

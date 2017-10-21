@@ -113,10 +113,9 @@ public class ListaEspañaTest {
     @Test
     public void testPrintLineUp() {
         System.out.println("printLineUp");
-        String lineUp = "";
         ListaEspaña instance = new ListaEspaña();
         String expResult = "";
-        String result = instance.printLineUp(lineUp);
+        String result = instance.printLineUp();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
