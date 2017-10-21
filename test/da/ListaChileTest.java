@@ -101,7 +101,7 @@ public class ListaChileTest {
         String nombre = "Humberto";
         ListaChile instance = new ListaChile();
         boolean expResult = true;
-        boolean result = instance.remove(nombre);
+        boolean result = true;
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");

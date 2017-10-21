@@ -163,7 +163,7 @@ public class ListaChile {
     /**
      * <h1>printLineUp</h1>
      * <p>
-     * Metodo que añade una marca a cada jugador.</p>
+     * Metodo que imprime la alineacion de Chile.</p>
      *
      * @param lineUp
      * @return String: alineacion del equipo
